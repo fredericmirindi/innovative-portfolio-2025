@@ -1,0 +1,137 @@
+{
+  "name": "Frédéric Mirindi - AI Research Portfolio",
+  "short_name": "FM Portfolio",
+  "description": "Next-generation research portfolio with AI-powered features and interactive visualizations",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00d4ff",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["education", "research", "technology"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshots/mobile-1.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "features": [
+    "AI-powered research insights",
+    "Real-time analytics dashboard",
+    "Interactive data visualizations",
+    "3D neural network demonstrations",
+    "Voice-activated AI assistant"
+  ],
+  "shortcuts": [
+    {
+      "name": "AI Research Tools",
+      "short_name": "AI Tools",
+      "description": "Access interactive AI research demonstrations",
+      "url": "/#interactive",
+      "icons": [
+        {
+          "src": "/icons/shortcut-ai.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Live Analytics",
+      "short_name": "Analytics",
+      "description": "View real-time research metrics",
+      "url": "/#analytics",
+      "icons": [
+        {
+          "src": "/icons/shortcut-analytics.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Publications",
+      "short_name": "Papers",
+      "description": "Browse research publications",
+      "url": "/#publications",
+      "icons": [
+        {
+          "src": "/icons/shortcut-publications.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://fredericmirindi.com",
+      "id": "com.fredericmirindi.portfolio"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  }
+}
