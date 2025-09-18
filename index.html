@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frédéric Mirindi - AI-Powered Research Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="description" content="Next-generation portfolio with AI-powered insights, real-time data visualization, and interactive research tools">
+    <meta name="keywords" content="AI, Economics, Machine Learning, Interactive Visualization, Real-time Analytics">
+    
+    <!-- Advanced Meta Tags -->
+    <meta property="og:title" content="Frédéric Mirindi - AI-Powered Research Portfolio">
+    <meta property="og:description" content="Experience cutting-edge research through interactive AI-powered visualizations">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fredericmirindi.github.io/innovative-portfolio-2025">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Progressive Web App -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1a1a2e">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/styles/main.css" as="style">
+    <link rel="preload" href="/js/core.js" as="script">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/animations.css">
+    
+    <!-- External Libraries -->
+    <script src="https://unpkg.com/three@0.157.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js"></script>
+    <script src="https://unpkg.com/d3@7"></script>
+    <script src="https://unpkg.com/@tensorflow/tfjs@4.10.0/dist/tf.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen with AI Animation -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="ai-loader">
+            <div class="neural-network">
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="connection"></div>
+                <div class="connection"></div>
+            </div>
+            <p class="loading-text">Initializing AI Systems...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Voice Assistant Toggle -->
+    <button id="ai-assistant" class="ai-assistant-btn" aria-label="AI Voice Assistant">
+        <svg class="mic-icon" viewBox="0 0 24 24">
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+        <div class="pulse-ring"></div>
+    </button>
+
+    <!-- Navigation with Glass Morphism -->
+    <nav class="navbar glass-morphism" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-text">FM</span>
+                <div class="brand-ai-indicator"></div>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" data-page="home">
+                        <span class="link-text">Home</span>
+                        <div class="link-underline"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#research" class="nav-link" data-page="research">
+                        <span class="link-text">AI Research</span>
+                        <div class="link-underline"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#publications" class="nav-link" data-page="publications">
+                        <span class="link-text">Publications</span>
+                        <div class="link-underline"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#analytics" class="nav-link" data-page="analytics">
+                        <span class="link-text">Live Analytics</span>
+                        <div class="link-underline"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#interactive" class="nav-link" data-page="interactive">
+                        <span class="link-text">AI Tools</span>
+                        <div class="link-underline"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-page="contact">
+                        <span class="link-text">Connect</span>
+                        <div class="link-underline"></div>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <div class="theme-icon-container">
+                        <svg class="sun-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                        </svg>
+                    </div>
+                </button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas" class="background-canvas"></canvas>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section with 3D Hero -->
+        <section class="page active" id="home">
+            <div class="hero-section">
+                <div class="hero-3d-container">
+                    <canvas id="hero-3d"></canvas>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="title-line">AI-Powered</span>
+                            <span class="title-line gradient-text">Research Portfolio</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            <span class="typing-animation">Exploring the intersection of AI and Economics through cutting-edge technology</span>
+                        </p>
+                        
+                        <div class="hero-stats">
+                            <div class="stat-card glass-morphism">
+                                <div class="stat-number" id="papers-count">20+</div>
+                                <div class="stat-label">AI-Enhanced Papers</div>
+                            </div>
+                            <div class="stat-card glass-morphism">
+                                <div class="stat-number" id="citations-count">150+</div>
+                                <div class="stat-label">Citations</div>
+                            </div>
+                            <div class="stat-card glass-morphism">
+                                <div class="stat-number" id="h-index">12</div>
+                                <div class="stat-label">H-Index</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" onclick="scrollToSection('research')">
+                                <span>Explore AI Research</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24">
+                                    <path d="M13 17l5-5-5-5M6 17l5-5-5-5"/>
+                                </svg>
+                            </button>
+                            <button class="btn btn-outline" onclick="scrollToSection('interactive')">
+                                <span>Try AI Tools</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24">
+                                    <path d="M9.5 2A7.5 7.5 0 0 0 2 9.5c0 5.424 7.5 11.5 7.5 11.5S17 14.924 17 9.5A7.5 7.5 0 0 0 9.5 2z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Real-time Metrics Dashboard -->
+                <div class="metrics-dashboard glass-morphism">
+                    <h3>Live Research Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-icon">📊</div>
+                            <div class="metric-value" id="live-citations">Loading...</div>
+                            <div class="metric-label">Citations Today</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-icon">🤖</div>
+                            <div class="metric-value" id="ai-models">15</div>
+                            <div class="metric-label">AI Models</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-icon">🌐</div>
+                            <div class="metric-value" id="visitors-today">Loading...</div>
+                            <div class="metric-label">Visitors Today</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Research Section -->
+        <section class="page" id="research">
+            <div class="container">
+                <header class="page-header">
+                    <h1>AI-Powered Research</h1>
+                    <p>Cutting-edge research enhanced with artificial intelligence and machine learning</p>
+                </header>
+                
+                <div class="research-grid">
+                    <!-- Neural Network Economic Modeling -->
+                    <div class="research-card advanced-card">
+                        <div class="card-header">
+                            <h3>Neural Network Economic Modeling</h3>
+                            <div class="status-indicator active"></div>
+                        </div>
+                        <div class="card-content">
+                            <p>Advanced deep learning models for economic forecasting with 95% accuracy</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">Time Series</span>
+                            </div>
+                            <canvas id="neural-viz" class="mini-viz"></canvas>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm" onclick="openResearchDemo('neural')">
+                                View Live Demo
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Real-time Sentiment Analysis -->
+                    <div class="research-card advanced-card">
+                        <div class="card-header">
+                            <h3>Real-time Market Sentiment</h3>
+                            <div class="status-indicator active"></div>
+                        </div>
+                        <div class="card-content">
+                            <p>NLP-powered sentiment analysis of financial markets and economic indicators</p>
+                            <div class="sentiment-display">
+                                <div class="sentiment-meter" id="market-sentiment">
+                                    <div class="meter-fill" style="width: 72%"></div>
+                                    <span class="meter-value">72% Positive</span>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">BERT</span>
+                                <span class="tech-tag">Transformers</span>
+                                <span class="tech-tag">Real-time API</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm" onclick="openSentimentTool()">
+                                Try Live Analysis
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Blockchain Economics -->
+                    <div class="research-card advanced-card">
+                        <div class="card-header">
+                            <h3>Blockchain Economic Models</h3>
+                            <div class="status-indicator active"></div>
+                        </div>
+                        <div class="card-content">
+                            <p>Game-theoretic analysis of consensus mechanisms and cryptocurrency economics</p>
+                            <div class="blockchain-viz">
+                                <div class="block" data-hash="0x1a2b"></div>
+                                <div class="block" data-hash="0x3c4d"></div>
+                                <div class="block" data-hash="0x5e6f"></div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Solidity</span>
+                                <span class="tech-tag">Web3</span>
+                                <span class="tech-tag">Game Theory</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm" onclick="openBlockchainSim()">
+                                Simulation
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quantum Economics -->
+                    <div class="research-card advanced-card">
+                        <div class="card-header">
+                            <h3>Quantum Computing in Economics</h3>
+                            <div class="status-indicator experimental"></div>
+                        </div>
+                        <div class="card-content">
+                            <p>Exploring quantum algorithms for portfolio optimization and risk analysis</p>
+                            <div class="quantum-viz">
+                                <div class="qubit" data-state="|0⟩"></div>
+                                <div class="qubit" data-state="|1⟩"></div>
+                                <div class="entanglement-line"></div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Qiskit</span>
+                                <span class="tech-tag">Quantum ML</span>
+                                <span class="tech-tag">IBM Quantum</span>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm" onclick="openQuantumDemo()">
+                                Quantum Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications with AI Insights -->
+        <section class="page" id="publications">
+            <div class="container">
+                <header class="page-header">
+                    <h1>AI-Enhanced Publications</h1>
+                    <p>Research papers with interactive visualizations and AI-powered insights</p>
+                </header>
+                
+                <!-- AI-Powered Search -->
+                <div class="search-container glass-morphism">
+                    <div class="search-box">
+                        <input type="text" id="ai-search" placeholder="Ask AI about my research..." class="ai-search-input">
+                        <button class="search-btn">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="search-suggestions">
+                        <span class="suggestion-chip">AI in Economics</span>
+                        <span class="suggestion-chip">Machine Learning Models</span>
+                        <span class="suggestion-chip">Economic Forecasting</span>
+                    </div>
+                </div>
+                
+                <!-- Dynamic Publications Grid -->
+                <div class="publications-grid" id="publications-grid">
+                    <!-- Publications will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Analytics Dashboard -->
+        <section class="page" id="analytics">
+            <div class="container">
+                <header class="page-header">
+                    <h1>Real-Time Research Analytics</h1>
+                    <p>Live insights into research impact, citations, and engagement</p>
+                </header>
+                
+                <div class="analytics-dashboard">
+                    <!-- Citation Trends -->
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Citation Trends</h3>
+                            <div class="time-selector">
+                                <button class="time-btn active" data-period="7d">7D</button>
+                                <button class="time-btn" data-period="30d">30D</button>
+                                <button class="time-btn" data-period="1y">1Y</button>
+                            </div>
+                        </div>
+                        <canvas id="citation-chart" class="analytics-chart"></canvas>
+                    </div>
+                    
+                    <!-- Geographic Impact -->
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>Global Research Impact</h3>
+                        </div>
+                        <div id="impact-map" class="impact-map"></div>
+                    </div>
+                    
+                    <!-- Research Network -->
+                    <div class="analytics-card full-width">
+                        <div class="card-header">
+                            <h3>Collaboration Network</h3>
+                        </div>
+                        <div id="network-graph" class="network-visualization"></div>
+                    </div>
+                    
+                    <!-- AI Performance Metrics -->
+                    <div class="analytics-card">
+                        <div class="card-header">
+                            <h3>AI Model Performance</h3>
+                        </div>
+                        <div class="metrics-list">
+                            <div class="metric-item">
+                                <span class="metric-name">Forecasting Accuracy</span>
+                                <div class="metric-bar">
+                                    <div class="bar-fill" style="width: 94%"></div>
+                                    <span class="metric-value">94%</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-name">Model Efficiency</span>
+                                <div class="metric-bar">
+                                    <div class="bar-fill" style="width: 87%"></div>
+                                    <span class="metric-value">87%</span>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-name">Data Processing Speed</span>
+                                <div class="metric-bar">
+                                    <div class="bar-fill" style="width: 91%"></div>
+                                    <span class="metric-value">91%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive AI Tools -->
+        <section class="page" id="interactive">
+            <div class="container">
+                <header class="page-header">
+                    <h1>Interactive AI Research Tools</h1>
+                    <p>Experience my research through hands-on AI-powered demonstrations</p>
+                </header>
+                
+                <div class="tools-grid">
+                    <!-- Economic Forecasting Tool -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3>🔮 Economic Forecasting Engine</h3>
+                        </div>
+                        <div class="tool-content">
+                            <p>Input economic indicators and get AI-powered predictions</p>
+                            <div class="input-group">
+                                <label>GDP Growth Rate (%)</label>
+                                <input type="range" id="gdp-rate" min="-5" max="10" value="2.5" step="0.1">
+                                <span class="range-value">2.5%</span>
+                            </div>
+                            <div class="input-group">
+                                <label>Inflation Rate (%)</label>
+                                <input type="range" id="inflation-rate" min="0" max="10" value="3.2" step="0.1">
+                                <span class="range-value">3.2%</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="runForecast()">
+                                Generate Forecast
+                            </button>
+                            <div id="forecast-result" class="result-display"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sentiment Analysis Tool -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3>📊 Real-time Sentiment Analyzer</h3>
+                        </div>
+                        <div class="tool-content">
+                            <p>Analyze economic text for sentiment and key insights</p>
+                            <textarea id="sentiment-input" placeholder="Enter economic news or text to analyze..."></textarea>
+                            <button class="btn btn-primary" onclick="analyzeSentiment()">
+                                Analyze Sentiment
+                            </button>
+                            <div id="sentiment-result" class="result-display"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Optimizer -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <h3>💼 AI Portfolio Optimizer</h3>
+                        </div>
+                        <div class="tool-content">
+                            <p>Optimize your investment portfolio using quantum algorithms</p>
+                            <div class="portfolio-inputs">
+                                <div class="asset-input">
+                                    <label>Stocks (%)</label>
+                                    <input type="number" id="stocks-pct" value="60" min="0" max="100">
+                                </div>
+                                <div class="asset-input">
+                                    <label>Bonds (%)</label>
+                                    <input type="number" id="bonds-pct" value="30" min="0" max="100">
+                                </div>
+                                <div class="asset-input">
+                                    <label>Crypto (%)</label>
+                                    <input type="number" id="crypto-pct" value="10" min="0" max="100">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" onclick="optimizePortfolio()">
+                                Optimize Portfolio
+                            </button>
+                            <div id="portfolio-result" class="result-display"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Neural Network Visualizer -->
+                    <div class="tool-card full-width">
+                        <div class="tool-header">
+                            <h3>🧠 Neural Network Visualizer</h3>
+                        </div>
+                        <div class="tool-content">
+                            <p>Interactive visualization of economic neural network models</p>
+                            <div class="network-controls">
+                                <button class="btn" onclick="trainNetwork()">Train Network</button>
+                                <button class="btn" onclick="resetNetwork()">Reset</button>
+                                <div class="control-group">
+                                    <label>Learning Rate:</label>
+                                    <input type="range" id="learning-rate" min="0.001" max="0.1" value="0.01" step="0.001">
+                                </div>
+                            </div>
+                            <canvas id="neural-network-viz" class="neural-canvas"></canvas>
+                            <div class="training-stats">
+                                <div class="stat">
+                                    <span>Epoch:</span>
+                                    <span id="epoch-count">0</span>
+                                </div>
+                                <div class="stat">
+                                    <span>Loss:</span>
+                                    <span id="loss-value">0.000</span>
+                                </div>
+                                <div class="stat">
+                                    <span>Accuracy:</span>
+                                    <span id="accuracy-value">0.0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="page" id="contact">
+            <div class="container">
+                <header class="page-header">
+                    <h1>Connect & Collaborate</h1>
+                    <p>Let's explore the future of AI-powered economics together</p>
+                </header>
+                
+                <div class="contact-grid">
+                    <!-- Contact Information -->
+                    <div class="contact-info glass-morphism">
+                        <h3>Get in Touch</h3>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">📧</div>
+                                <div class="method-details">
+                                    <h4>Email</h4>
+                                    <p>frederic.mirindi@umanitoba.ca</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="method-icon">📱</div>
+                                <div class="method-details">
+                                    <h4>Phone</h4>
+                                    <p>+1 (204) 298-4337</p>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="method-icon">🏢</div>
+                                <div class="method-details">
+                                    <h4>Office</h4>
+                                    <p>University of Manitoba<br>Winnipeg, MB</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="GitHub">
+                                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- AI-Powered Contact Form -->
+                    <div class="contact-form-container glass-morphism">
+                        <h3>Send an AI-Enhanced Message</h3>
+                        <form id="ai-contact-form" class="ai-form">
+                            <div class="form-group">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" name="name" required>
+                                <div class="ai-suggestion" id="name-suggestion"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" name="email" required>
+                                <div class="ai-validation" id="email-validation"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-subject">Subject</label>
+                                <select id="contact-subject" name="subject" required>
+                                    <option value="">Select a topic...</option>
+                                    <option value="collaboration">Research Collaboration</option>
+                                    <option value="consulting">AI Consulting</option>
+                                    <option value="speaking">Speaking Engagement</option>
+                                    <option value="interview">Media Interview</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" name="message" rows="5" required placeholder="Tell me about your project or inquiry..."></textarea>
+                                <div class="ai-enhancement">
+                                    <button type="button" class="enhance-btn" onclick="enhanceMessage()">
+                                        ✨ Enhance with AI
+                                    </button>
+                                    <div class="message-stats">
+                                        <span id="word-count">0 words</span>
+                                        <span id="sentiment-indicator">😊 Positive</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <span>Send Message</span>
+                                <div class="loading-spinner"></div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- AI Chat Widget -->
+    <div id="ai-chat" class="ai-chat-widget">
+        <div class="chat-header">
+            <div class="chat-avatar">🤖</div>
+            <div class="chat-title">
+                <h4>AI Research Assistant</h4>
+                <p class="chat-status">Online</p>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">&times;</button>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message assistant">
+                <div class="message-content">
+                    Hello! I'm Frederic's AI assistant. I can help you explore his research, answer questions about his work, or provide insights into AI and economics. What would you like to know?
+                </div>
+                <div class="message-time">Just now</div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Ask about research, AI, economics...">
+            <button class="send-btn" onclick="sendMessage()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Action Button for AI Chat -->
+    <button id="chat-fab" class="chat-fab" onclick="toggleChat()">
+        <svg class="chat-icon" viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+        </svg>
+        <div class="notification-dot"></div>
+    </button>
+
+    <!-- Performance Monitor -->
+    <div id="performance-monitor" class="performance-monitor">
+        <div class="monitor-header">
+            <span>⚡ Performance</span>
+            <button onclick="toggleMonitor()">&times;</button>
+        </div>
+        <div class="monitor-stats">
+            <div class="stat">
+                <span>FPS:</span>
+                <span id="fps-counter">60</span>
+            </div>
+            <div class="stat">
+                <span>Memory:</span>
+                <span id="memory-usage">0MB</span>
+            </div>
+            <div class="stat">
+                <span>Load Time:</span>
+                <span id="load-time">0ms</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/core.js"></script>
+    <script src="/js/three-scene.js"></script>
+    <script src="/js/ai-tools.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/js/chat-bot.js"></script>
+    <script src="/js/performance.js"></script>
+    
+    <!-- Service Worker for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>
